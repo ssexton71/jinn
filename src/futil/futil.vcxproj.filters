@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="util">
+      <UniqueIdentifier>{43339F7C-2F6A-A00D-D856-8610C46C1C0F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="util\dirent_win32.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\exepath.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\filebackup.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\filelist.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\filepat.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\fileutil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\txtemit.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\xmlemit.h">
+      <Filter>util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util\dirent_win32.c">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\exepath.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\filebackup.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\filelist.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\filepat.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\fileutil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\txtemit.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\xmlemit.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

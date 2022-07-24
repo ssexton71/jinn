@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release-Static|x64">
+      <Configuration>Release-Static</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F4FC987C-E033-9A0D-8920-80107536160F}</ProjectGuid>
+    <RootNamespace>jinn</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>.objs\x64\Release-Static\</IntDir>
+    <TargetName>jinn</TargetName>
+    <TargetExt>.exe</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'">
+    <ClCompile>
+      <AdditionalOptions>-Wall /MD /EHc /EHs /Oi /Ot /W3 /wd 4710 /wd 4711 /wd 4251 /wd 4619 /wd 4503 /wd 4820 /wd 4514 /wd 4571 /wd 4365 /wd 4625 /wd 4626 /wd 5026 /wd 5027 /wd 4774 /wd 4826 /wd 4275 /wd 4640  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader></PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDataBaseFileName>$(OutDir)/jinn.pdb</ProgramDataBaseFileName>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>$(OutDir)jinn.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions>/NODEFAULTLIB:OLDNAMES.LIB /WX /MANIFESTUAC:NO /MANIFEST %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="generator\generator.h" />
+    <ClInclude Include="generator\gmakegen.h" />
+    <ClInclude Include="generator\vsgen.h" />
+    <ClInclude Include="generator\xmlgen.h" />
+    <ClInclude Include="model\block.h" />
+    <ClInclude Include="model\cblock.h" />
+    <ClInclude Include="model\configuration.h" />
+    <ClInclude Include="model\gscope.h" />
+    <ClInclude Include="model\param.h" />
+    <ClInclude Include="model\project.h" />
+    <ClInclude Include="model\solution.h" />
+    <ClInclude Include="util\cookpath.h" />
+    <ClInclude Include="util\fileext.h" />
+    <ClInclude Include="util\filelist.h" />
+    <ClInclude Include="util\genfile.h" />
+    <ClInclude Include="util\uuid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="generator\gmakegen.cpp">
+      <ObjectFileName>$(IntDir)generator\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="generator\vsgen.cpp">
+      <ObjectFileName>$(IntDir)generator\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="generator\xmlgen.cpp">
+      <ObjectFileName>$(IntDir)generator\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="jinn.cpp">
+      <ObjectFileName>$(IntDir).\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\block.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\cblock.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\configuration.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\gscope.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\param.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\project.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="model\solution.cpp">
+      <ObjectFileName>$(IntDir)model\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\genfile.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\uuid.c">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\build-win.bat" />
+    <None Include="..\..\build.sh" />
+    <None Include="..\..\deps.sh" />
+    <None Include="..\..\ggen.sh" />
+    <None Include="..\..\jgen.sh" />
+    <None Include="..\..\jinnfile.jinn" />
+    <None Include="..\..\jinnfile.lua" />
+    <None Include="..\..\jinnfile.xml" />
+    <None Include="..\..\lua\compat.lua" />
+    <None Include="..\..\lua\jinn.lua" />
+    <None Include="..\..\lua\osext.lua" />
+    <None Include="..\..\lua\stringext.lua" />
+    <None Include="..\..\package-futil.sh" />
+    <None Include="..\..\package-jinn.sh" />
+    <None Include="..\..\package.sh" />
+    <None Include="..\..\premake4.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\futil\futil.vcxproj">
+      <Project>{49E7760F-B5FB-9EC0-7E7D-4220EA509BF1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

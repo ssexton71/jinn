@@ -1,0 +1,213 @@
+<Global>
+  <solution>
+    <k>jinn</k>
+    <language>C++</language>
+    <configurations>Release-Static</configurations>
+    <platforms>x64</platforms>
+    <location>src</location>
+    <buildoptions>-Wall</buildoptions>
+    <includedirs>
+      <v>include</v>
+      <v>src</v>
+    </includedirs>
+    <configuration>
+      <v>Release</v>
+      <kind>SharedLib</kind>
+    </configuration>
+    <configuration>
+      <v>Release-Static</v>
+      <kind>StaticLib</kind>
+    </configuration>
+    <configuration>
+      <v>windows</v>
+      <defines>WIN32</defines>
+    </configuration>
+    <configuration>
+      <v>gcc</v>
+      <flags>
+        <v>Symbols</v>
+        <v>Optimize</v>
+      </flags>
+      <buildoptions>
+        <v>-fno-strict-aliasing</v>
+        <v>-Werror</v>
+      </buildoptions>
+      <buildoptions_cpp>-std=c++11</buildoptions_cpp>
+      <linkoptions>
+        <v>-z defs</v>
+        <v>-Wl,-rpath-link,../../bin-linux</v>
+      </linkoptions>
+    </configuration>
+    <configuration>
+      <v>vs2019</v>
+      <buildoptions>
+        <v>/MD</v>
+        <v>/EHc</v>
+        <v>/EHs</v>
+        <v>/Oi</v>
+        <v>/Ot</v>
+        <v>/W3</v>
+      </buildoptions>
+      <flags>
+        <v>OptimizeSpeed</v>
+        <v>FatalWarnings</v>
+      </flags>
+      <linkoptions>/NODEFAULTLIB:OLDNAMES.LIB</linkoptions>
+      <buildoptions>
+        <v>/wd 4710</v>
+        <v>/wd 4711</v>
+        <v>/wd 4251</v>
+        <v>/wd 4619</v>
+        <v>/wd 4503</v>
+        <v>/wd 4820</v>
+        <v>/wd 4514</v>
+        <v>/wd 4571</v>
+        <v>/wd 4365</v>
+        <v>/wd 4625</v>
+        <v>/wd 4626</v>
+        <v>/wd 5026</v>
+        <v>/wd 5027</v>
+        <v>/wd 4774</v>
+      </buildoptions>
+      <flags>
+        <v>NoManifest</v>
+        <v>NoIncrementalLink</v>
+      </flags>
+    </configuration>
+    <configuration>
+      <v>vs2019</v>
+      <linkoptions>/WX</linkoptions>
+      <flags>Symbols</flags>
+    </configuration>
+    <configuration>
+      <v>x64</v>
+      <targetdir>bin</targetdir>
+      <libdirs>lib</libdirs>
+    </configuration>
+    <configuration>
+      <v>x32</v>
+      <targetdir>bin32</targetdir>
+      <libdirs>lib32</libdirs>
+    </configuration>
+    <project>
+      <k>futil</k>
+      <group>libs</group>
+      <location>src/futil</location>
+      <objdir>src/futil/.objs</objdir>
+      <files>
+        <v>src/futil/**.h</v>
+        <v>src/futil/**.cpp</v>
+        <v>src/futil/**.c</v>
+        <v>src/futil/**.lua</v>
+      </files>
+      <targetname>futil-s</targetname>
+      <configuration>
+        <v>vs2019</v>
+        <v>Release</v>
+        <defines>FUTIL_DECLSPEC=__declspec(dllexport)</defines>
+        <implibname>futil</implibname>
+      </configuration>
+      <configuration>
+        <v>x32</v>
+        <v>vs2019</v>
+        <v>Release</v>
+        <implibdir>lib32</implibdir>
+      </configuration>
+      <configuration>
+        <v>x64</v>
+        <v>vs2019</v>
+        <implibdir>lib</implibdir>
+      </configuration>
+      <configuration>
+        <v></v>
+      </configuration>
+      <configuration>
+        <v>vs2019</v>
+        <buildoptions>
+          <v>/wd 4826</v>
+          <v>/wd 4275</v>
+          <v>/wd 4640</v>
+        </buildoptions>
+      </configuration>
+      <configuration>
+        <v></v>
+      </configuration>
+      <configuration>
+        <v>vs2019</v>
+        <pdbdir>$(TargetDir)</pdbdir>
+      </configuration>
+    </project>
+    <project>
+      <k>jinn</k>
+      <group>apps</group>
+      <kind>ConsoleApp</kind>
+      <location>src/jinn</location>
+      <objdir>src/jinn/.objs</objdir>
+      <files>
+        <v>src/jinn/**.h</v>
+        <v>src/jinn/**.cpp</v>
+        <v>src/jinn/**.c</v>
+        <v>src/jinn/**.lua</v>
+        <v>premake4.lua</v>
+        <v>ggen.sh</v>
+        <v>jgen.sh</v>
+        <v>lua/**.lua</v>
+        <v>jinnfile.*</v>
+        <v>package*.sh</v>
+        <v>deps.sh</v>
+        <v>build-win.bat</v>
+        <v>build.sh</v>
+      </files>
+      <links>futil</links>
+      <configuration>
+        <v>vs2019</v>
+        <v>Release</v>
+        <defines>JINN_DECLSPEC=__declspec(dllexport)</defines>
+        <implibname>jinn</implibname>
+      </configuration>
+      <configuration>
+        <v>x32</v>
+        <v>vs2019</v>
+        <v>Release</v>
+        <implibdir>lib32</implibdir>
+      </configuration>
+      <configuration>
+        <v>x64</v>
+        <v>vs2019</v>
+        <implibdir>lib</implibdir>
+      </configuration>
+      <configuration>
+        <v></v>
+      </configuration>
+      <configuration>
+        <v>vs2019</v>
+        <buildoptions>
+          <v>/wd 4826</v>
+          <v>/wd 4275</v>
+          <v>/wd 4640</v>
+        </buildoptions>
+      </configuration>
+      <configuration>
+        <v></v>
+      </configuration>
+      <configuration>
+        <v>vs2019</v>
+        <linkoptions>
+          <v>/MANIFESTUAC:NO</v>
+          <v>/MANIFEST</v>
+        </linkoptions>
+      </configuration>
+      <configuration>
+        <v>vs2019</v>
+        <v>Release-Static</v>
+      </configuration>
+      <configuration>
+        <v>linux</v>
+        <v>Release-Static</v>
+      </configuration>
+      <configuration>
+        <v>linux</v>
+      </configuration>
+    </project>
+  </solution>
+</Global>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="generator">
+      <UniqueIdentifier>{AC378C0D-18A2-4084-61E0-F129CD891ED9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{C78D880B-3397-887C-BC12-9F7C281B947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{F603F20F-6218-1AC1-2B9A-BD20976D16F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{43339F7C-2F6A-A00D-D856-8610C46C1C0F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\build-win.bat" />
+    <None Include="..\..\build.sh" />
+    <None Include="..\..\deps.sh" />
+    <None Include="..\..\ggen.sh" />
+    <None Include="..\..\jgen.sh" />
+    <None Include="..\..\jinnfile.jinn" />
+    <None Include="..\..\jinnfile.lua" />
+    <None Include="..\..\jinnfile.xml" />
+    <None Include="..\..\lua\compat.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="..\..\lua\jinn.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="..\..\lua\osext.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="..\..\lua\stringext.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="..\..\package-futil.sh" />
+    <None Include="..\..\package-jinn.sh" />
+    <None Include="..\..\package.sh" />
+    <None Include="..\..\premake4.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="generator\generator.h">
+      <Filter>generator</Filter>
+    </ClInclude>
+    <ClInclude Include="generator\gmakegen.h">
+      <Filter>generator</Filter>
+    </ClInclude>
+    <ClInclude Include="generator\vsgen.h">
+      <Filter>generator</Filter>
+    </ClInclude>
+    <ClInclude Include="generator\xmlgen.h">
+      <Filter>generator</Filter>
+    </ClInclude>
+    <ClInclude Include="model\block.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\cblock.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\configuration.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\gscope.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\param.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\project.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\solution.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="util\cookpath.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\fileext.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\filelist.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\genfile.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\uuid.h">
+      <Filter>util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="generator\gmakegen.cpp">
+      <Filter>generator</Filter>
+    </ClCompile>
+    <ClCompile Include="generator\vsgen.cpp">
+      <Filter>generator</Filter>
+    </ClCompile>
+    <ClCompile Include="generator\xmlgen.cpp">
+      <Filter>generator</Filter>
+    </ClCompile>
+    <ClCompile Include="jinn.cpp" />
+    <ClCompile Include="model\block.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cblock.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\configuration.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\gscope.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\param.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\project.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\solution.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="util\genfile.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\uuid.c">
+      <Filter>util</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

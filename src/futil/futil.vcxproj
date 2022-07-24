@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release-Static|x64">
+      <Configuration>Release-Static</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{49E7760F-B5FB-9EC0-7E7D-4220EA509BF1}</ProjectGuid>
+    <RootNamespace>futil</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>.objs\x64\Release-Static\</IntDir>
+    <TargetName>futil-s</TargetName>
+    <TargetExt>.lib</TargetExt>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'">
+    <ClCompile>
+      <AdditionalOptions>-Wall /MD /EHc /EHs /Oi /Ot /W3 /wd 4710 /wd 4711 /wd 4251 /wd 4619 /wd 4503 /wd 4820 /wd 4514 /wd 4571 /wd 4365 /wd 4625 /wd 4626 /wd 5026 /wd 5027 /wd 4774 /wd 4826 /wd 4275 /wd 4640  %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader></PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(TargetDir)/futil-s.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)futil-s.lib</OutputFile>
+      <AdditionalOptions>/NODEFAULTLIB:OLDNAMES.LIB /WX %(AdditionalOptions)</AdditionalOptions>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDataBaseFileName>$(TargetDir)/futil-s.pdb</ProgramDataBaseFileName>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="util\dirent_win32.h" />
+    <ClInclude Include="util\exepath.h" />
+    <ClInclude Include="util\filebackup.h" />
+    <ClInclude Include="util\filelist.h" />
+    <ClInclude Include="util\filepat.h" />
+    <ClInclude Include="util\fileutil.h" />
+    <ClInclude Include="util\txtemit.h" />
+    <ClInclude Include="util\xmlemit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util\dirent_win32.c">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\exepath.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\filebackup.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\filelist.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\filepat.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\fileutil.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\txtemit.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="util\xmlemit.cpp">
+      <ObjectFileName>$(IntDir)util\</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

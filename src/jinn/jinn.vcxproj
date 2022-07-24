@@ -127,6 +127,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\LICENSE" />
+    <None Include="..\..\README.md" />
     <None Include="..\..\build-win.bat" />
     <None Include="..\..\build.sh" />
     <None Include="..\..\deps.sh" />

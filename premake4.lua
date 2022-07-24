@@ -160,6 +160,7 @@ project "jinn"
   kind "ConsoleApp"
   jinncommon()
   files { "premake4.lua", "ggen.sh", "jgen.sh", "lua/**.lua", "jinnfile.*", "package*.sh", "deps.sh", "build-win.bat", "build.sh" }
+  files { "README.md", "LICENSE" }
   links "futil"
   configuration { MSVC }
     linkoptions { "/MANIFESTUAC:NO" }

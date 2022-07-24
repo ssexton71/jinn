@@ -157,6 +157,8 @@
         <v>deps.sh</v>
         <v>build-win.bat</v>
         <v>build.sh</v>
+        <v>README.md</v>
+        <v>LICENSE</v>
       </files>
       <links>futil</links>
       <configuration>

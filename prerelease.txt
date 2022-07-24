@@ -1,0 +1,17 @@
+
+Git history prior to the 1.0 release is kept in the prerelease branch.
+Use 'git log prerelease' to see it. 
+
+To recreate the entire history, including prerelease history:
+
+git replace prerelease-here prerelease (if branch names exist)
+git replace c3e8c32 fe9391f (if they don't)
+
+Be careful not to commit the combined history, or all benefits of the
+split history will be lost!
+
+To undo it:
+
+git replace -d prerelease-here
+ 
+See https://git-scm.com/book/en/v2/Git-Tools-Replace for more info

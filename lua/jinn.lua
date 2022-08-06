@@ -161,3 +161,6 @@ function platformtoolset(param)
   jinn.param("platformtoolset", param)
 end
 
+function disablewarnings(param)
+  jinn.param("disablewarnings", param)
+end

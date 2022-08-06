@@ -4,8 +4,13 @@
     <language>C++</language>
     <configurations>Release-Static</configurations>
     <platforms>x64</platforms>
+    <kind>StaticLib</kind>
     <location>src</location>
-    <buildoptions>-Wall</buildoptions>
+    <flags>
+      <v>AllWarnings</v>
+      <v>FatalWarnings</v>
+      <v>Symbols</v>
+    </flags>
     <includedirs>
       <v>include</v>
       <v>src</v>
@@ -24,14 +29,8 @@
     </configuration>
     <configuration>
       <v>gcc</v>
-      <flags>
-        <v>Symbols</v>
-        <v>Optimize</v>
-      </flags>
-      <buildoptions>
-        <v>-fno-strict-aliasing</v>
-        <v>-Werror</v>
-      </buildoptions>
+      <flags>Optimize</flags>
+      <buildoptions>-fno-strict-aliasing</buildoptions>
       <buildoptions_cpp>-std=c++11</buildoptions_cpp>
       <linkoptions>
         <v>-z defs</v>
@@ -48,36 +47,16 @@
         <v>/Ot</v>
         <v>/W3</v>
       </buildoptions>
-      <flags>
-        <v>OptimizeSpeed</v>
-        <v>FatalWarnings</v>
-      </flags>
+      <flags>OptimizeSpeed</flags>
       <linkoptions>/NODEFAULTLIB:OLDNAMES.LIB</linkoptions>
-      <buildoptions>
-        <v>/wd 4710</v>
-        <v>/wd 4711</v>
-        <v>/wd 4251</v>
-        <v>/wd 4619</v>
-        <v>/wd 4503</v>
-        <v>/wd 4820</v>
-        <v>/wd 4514</v>
-        <v>/wd 4571</v>
-        <v>/wd 4365</v>
-        <v>/wd 4625</v>
-        <v>/wd 4626</v>
-        <v>/wd 5026</v>
-        <v>/wd 5027</v>
-        <v>/wd 4774</v>
-      </buildoptions>
+      <disablewarnings>
+        <v>4710</v>
+        <v>4711</v>
+      </disablewarnings>
       <flags>
         <v>NoManifest</v>
         <v>NoIncrementalLink</v>
       </flags>
-    </configuration>
-    <configuration>
-      <v>vs2019</v>
-      <linkoptions>/WX</linkoptions>
-      <flags>Symbols</flags>
     </configuration>
     <configuration>
       <v>x64</v>
@@ -108,6 +87,13 @@
         <implibname>futil</implibname>
       </configuration>
       <configuration>
+        <v>linux</v>
+        <linkoptions>
+          <v>-static</v>
+          <v>-static-libstdc++</v>
+        </linkoptions>
+      </configuration>
+      <configuration>
         <v>x32</v>
         <v>vs2019</v>
         <v>Release</v>
@@ -120,14 +106,6 @@
       </configuration>
       <configuration>
         <v></v>
-      </configuration>
-      <configuration>
-        <v>vs2019</v>
-        <buildoptions>
-          <v>/wd 4826</v>
-          <v>/wd 4275</v>
-          <v>/wd 4640</v>
-        </buildoptions>
       </configuration>
       <configuration>
         <v></v>
@@ -168,6 +146,13 @@
         <implibname>jinn</implibname>
       </configuration>
       <configuration>
+        <v>linux</v>
+        <linkoptions>
+          <v>-static</v>
+          <v>-static-libstdc++</v>
+        </linkoptions>
+      </configuration>
+      <configuration>
         <v>x32</v>
         <v>vs2019</v>
         <v>Release</v>
@@ -180,14 +165,6 @@
       </configuration>
       <configuration>
         <v></v>
-      </configuration>
-      <configuration>
-        <v>vs2019</v>
-        <buildoptions>
-          <v>/wd 4826</v>
-          <v>/wd 4275</v>
-          <v>/wd 4640</v>
-        </buildoptions>
       </configuration>
       <configuration>
         <v></v>

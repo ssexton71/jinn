@@ -48,13 +48,12 @@ ifeq ($(config),release-static64)
   TARGET              = $(TARGETDIR)/libfutil-s.a
   DEFINES            +=
   INCLUDES           += -I"../../include" -I".."
-  INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
-  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
-  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror -std=c++11
-  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
+  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
+  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing -std=c++11
+  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L../../lib -m64 -z defs -Wl,-rpath-link,../../bin-linux -static -static-libstdc++
   LDDEPS             +=
@@ -64,6 +63,7 @@ ifeq ($(config),release-static64)
   OBJECTS := \
 	$(OBJDIR)/util/dirent_win32.o \
 	$(OBJDIR)/util/exepath.o \
+	$(OBJDIR)/util/filebackup.o \
 	$(OBJDIR)/util/filelist.o \
 	$(OBJDIR)/util/filepat.o \
 	$(OBJDIR)/util/fileutil.o \
@@ -139,6 +139,10 @@ $(OBJDIR)/util/dirent_win32.o: util/dirent_win32.c $(GCH) $(MAKEFILE)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/util/exepath.o: util/exepath.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/util/filebackup.o: util/filebackup.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

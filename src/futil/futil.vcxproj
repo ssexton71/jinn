@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-Static|x64'">
     <ClCompile>
-      <AdditionalOptions>-Wall /MD /EHc /EHs /Oi /Ot /W3 /wd 4710 /wd 4711 /wd 4251 /wd 4619 /wd 4503 /wd 4820 /wd 4514 /wd 4571 /wd 4365 /wd 4625 /wd 4626 /wd 5026 /wd 5027 /wd 4774 /wd 4826 /wd 4275 /wd 4640  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Wall /MD /EHc /EHs /Oi /Ot /W3 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..\..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -49,6 +49,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(TargetDir)/futil-s.pdb</ProgramDataBaseFileName>
+      <DisableSpecificWarnings>4710;4711;</DisableSpecificWarnings>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -56,7 +57,7 @@
     </ResourceCompile>
     <Lib>
       <OutputFile>$(OutDir)futil-s.lib</OutputFile>
-      <AdditionalOptions>/NODEFAULTLIB:OLDNAMES.LIB /WX %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/NODEFAULTLIB:OLDNAMES.LIB %(AdditionalOptions)</AdditionalOptions>
       <TargetMachine>MachineX64</TargetMachine>
     </Lib>
     <Link>

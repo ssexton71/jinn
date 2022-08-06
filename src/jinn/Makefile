@@ -48,13 +48,12 @@ ifeq ($(config),release-static64)
   TARGET              = $(TARGETDIR)/jinn
   DEFINES            +=
   INCLUDES           += -I"../../include" -I".."
-  INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
-  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
-  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror -std=c++11
-  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
-  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -fno-strict-aliasing -Werror
+  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
+  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing -std=c++11
+  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -O2 -m64 -Wall -Werror -fno-strict-aliasing
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L../../lib -L../../bin -m64 -z defs -Wl,-rpath-link,../../bin-linux -static -static-libstdc++
   LDDEPS             += ../../bin/libfutil-s.a

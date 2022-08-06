@@ -156,6 +156,10 @@ inline bool jinn::generator::GMakeGenerator::generateProject(jinn::model::Projec
 
 			std::string bopts, bopts_cpp;
 			bopts += " -g -O2 -m64";  // FIXME
+			if (p->findAllFlags(*s, "AllWarnings", selectors))
+				bopts += " -Wall";
+			if (p->findAllFlags(*s, "FatalWarnings", selectors))
+				bopts += " -Werror";
 			auto buildopts = p->findAllConfigVals(*s, "buildoptions", selectors ).vals;
 			for (auto buildopt : buildopts) {
 				bopts.append(" "); bopts.append(buildopt);

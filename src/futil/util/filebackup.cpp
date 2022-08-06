@@ -8,6 +8,10 @@
 #include "fileutil.h"
 #include "futil/util/filelist.h"
 
+#ifndef _MSC_VER
+#define localtime_s(a,b) localtime_r(b,a)
+#endif
+
 static inline void replaceAll(std::string& s, char from, char to) {
 	for (std::string::iterator it = s.begin(); it != s.end(); it++) {
 		if (from == *it) *it = to;

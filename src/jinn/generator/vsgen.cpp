@@ -6,13 +6,6 @@
 #include "futil/util/filelist.h"
 #include "../util/genfile.h"
 
-inline bool findAllFlags(jinn::model::ConfigurableKeyBlock& b1, jinn::model::ConfigurableKeyBlock& b2, const char* fl, const std::vector<std::string>& selectors) {
-	jinn::model::Param p = b2.findAllConfigVals(b1, "flags", selectors);
-	for (auto& val : p.vals)
-		if (val == fl) return true;
-	return false;
-}
-
 #include <fstream>
 
 #include "futil/util/fileutil.h"
@@ -176,7 +169,7 @@ inline const char* getOptimization(jinn::model::Project* p, jinn::model::Solutio
 		{ "OptimizeSpeed", "MaxSpeed" },
 	};
 	for (auto& of : optFlags) 
-		if (findAllFlags(*s, *p, of.flag, selectors)) return of.value;
+		if (p->findAllFlags(*s, of.flag, selectors)) return of.value;
 	return DISABLED;
 }
 
@@ -319,7 +312,14 @@ inline bool jinn::generator::VsGenerator::generateProject(jinn::model::Project* 
 			std::string incs = collapsePaths(p->findConfigVals(*s, "includedirs", selectors ).vals, ";", root) + "%(AdditionalIncludeDirectories)"; 
 			std::string defs = collapse(p->findAllConfigVals(*s, "defines", selectors ).vals, ";") + "%(PreprocessorDefinitions)";
 			e.begin("ClCompile");
-			val = collapse(p->findAllConfigVals(*s, "buildoptions", selectors ).vals, " ") + " %(AdditionalOptions)";
+			val = collapse(p->findAllConfigVals(*s, "buildoptions", selectors ).vals, " ");
+			if (p->findAllFlags(*s, "AllWarnings", selectors))
+				val.insert(0, "-Wall ");
+//			auto disablewarnings = p->findAllConfigVals(*s, "disablewarnings", selectors ).vals;
+//			if (!disablewarnings.empty()) 
+//				for (auto& wd : disablewarnings)
+//					val += "/wd " + wd + " ";
+			val += "%(AdditionalOptions)";
 			e.emit("AdditionalOptions", val.c_str());
 			e.emit("Optimization", getOptimization(p, s, selectors));
 			e.emit("AdditionalIncludeDirectories", incs.c_str());
@@ -336,10 +336,14 @@ inline bool jinn::generator::VsGenerator::generateProject(jinn::model::Project* 
 			e.emit("MultiProcessorCompilation", "true");
 			e.emit("PrecompiledHeader", "");
 			e.emit("WarningLevel", "Level3");
-			e.emit("TreatWarningAsError", "true");
+			if (p->findAllFlags(*s, "FatalWarnings", selectors))
+				e.emit("TreatWarningAsError", "true");
 			e.emit("DebugInformationFormat", "ProgramDatabase");
 			if (kind == "StaticLib") 
 				e.emit("ProgramDataBaseFileName", pdb.c_str());
+			val = collapse(p->findAllConfigVals(*s, "disablewarnings", selectors ).vals, ";");
+			if (!val.empty())
+				e.emit("DisableSpecificWarnings", val.c_str());
 			e.end("ClCompile");
 			e.begin("ResourceCompile");
 			e.emit("PreprocessorDefinitions", defs.c_str());
@@ -388,7 +392,7 @@ inline bool jinn::generator::VsGenerator::generateProject(jinn::model::Project* 
 					implib = val + targetName + ".lib";
 				} else {
 					ext = ".exe";
-					if (!findAllFlags(*s, *p, "WinMain", selectors))
+					if (!p->findAllFlags(*p, "WinMain", selectors))
 						entry = "mainCRTStartup";
 				}
 				val = "$(OutDir)" + targetName + ext;
@@ -405,11 +409,11 @@ inline bool jinn::generator::VsGenerator::generateProject(jinn::model::Project* 
 					e.emit("TargetMachine", "MachineX64");
 				val = collapse(p->findConfigVals(*s, "linkoptions", selectors ).vals, " ") + "%(AdditionalOptions)";
 				e.emit("AdditionalOptions", val.c_str());
-				if (findAllFlags(*s, *p, "NoEnableUAC", selectors))
+				if (p->findAllFlags(*s, "NoEnableUAC", selectors))
 					e.emit("EnableUAC", "false");
 			}
 			e.end("Link");
-			if (findAllFlags(*s, *p, "PerMonitorHighDpiAware", selectors)) {
+			if (p->findAllFlags(*s, "PerMonitorHighDpiAware", selectors)) {
 				e.begin("Manifest");
 				e.emit("EnableDpiAwareness", "PerMonitorHighDPIAware");
 				e.end("Manifest");

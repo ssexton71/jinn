@@ -55,6 +55,13 @@ public:
 		return p.vals.empty()? "" : p.vals.back();
 	}
 
+	inline bool findAllFlags(jinn::model::ConfigurableKeyBlock& parent, const char* fl, const std::vector<std::string>& selectors) {
+		jinn::model::Param p = findAllConfigVals(parent, "flags", selectors);
+		for (auto& val : p.vals)
+			if (val == fl) return true;
+		return false;
+	}
+
 
 };
 
